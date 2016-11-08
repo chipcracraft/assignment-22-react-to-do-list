@@ -1,10 +1,29 @@
-* {
-	font-family: Helvetica, Arial, sans-serif;
-	box-sizing: border-box;
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "../../node_modules/font-awesome/scss/font-awesome.scss";
+
+
+// * {
+// 	font-family: Helvetica, Arial, sans-serif;
+// 	box-sizing: border-box;
+// 	max-width: auto;
+// }
+
+
+
+#app-container {
+	background-color: #6495ED;
 }
 
-h1 {
-	font-size: 300px;
-	text-align: center;
-	color: fuchsia;
+.list-head h3 {
+	font-family: 'Shrikhand', cursive;
+}
+
+.table-row {
+		background-color: #DDDDDD;
+		text-align: center;
+
+}
+
+.list-input {
+	padding-left: 60%;
 }
