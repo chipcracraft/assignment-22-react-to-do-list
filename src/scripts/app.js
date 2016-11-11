@@ -4,118 +4,75 @@ const Backbone = require('backbone')
 const $ = require('jquery')
 
 console.log(React)
-// document.querySelector('#app-container').innerHTML = `<h1>YOLO</h1>`
 
 let HomeView = React.createClass({
 
     getInitialState: function(){
           return {
-              listItems: []
+              listItems: [],
+              inputText: ""
           }
         },
 
-        var ToDoList = React.createClass ({
-           render: function() {
-              let listEntry = this.props.entries;
 
-              function addToList(item) {
-                return <li key={item.key}>{item.text}</li>
-              }
-              let listItems = listEntry.map(addToList)
+        onInputChange: function(evt){
+              return this.setState({
+                inputText: evt.target.value
+              })
 
-              return (
-                <ul className="to-do-list">
-                  {listIems}
-                  </ul>
-              )
-           }
-        })
+        },
 
 
-        const addList: function(){
-            let itemsArr = this.state.items
+        addList: function(evt){
+          evt.preventDefault()
+            let itemsArr = this.state.listItems
 
             itemsArr.push(
               {
-                text: this._inputElement.value
-                key: i
+                text: this.state.inputText
+
               }
             )
-          this.setState({
-            listItems : itemsArr
-        }),
-          this._inputElement.value = ""
+          return this.setState({
+                listItems : itemsArr,
+                inputText : ""
+        })
 
-  //
+},
 
-
-  // _keyDownEvt: function(evt){
-  //     if(evt.key == 'Enter'){
+  
   //
-  //       }
-  //     },
-
-      // componentWillMount: function(){
-      //
-      //     var self = this
-      //       Backbone.Events.on('change-list',function(addedlist,newStatus){
-      //         console.log('inventory changed', addedlist, newStatus)
-      //
-      //         let listCopy = self.state.listItems.map((copy) => {return copy})
-      //         let indexAt
-      //         let listObj = listCopy.find(function(itemObj,i){
-      //             indexAt = i
-      //             return itemObj === addedlist
-      //
-      //         })
-      //
-      //         listCopy[indexAt] = addedlist
-      //         self.setState({listItems: listCopy})
-      //
-      //     })
-      //
-      // },
-  // _handleNewListSubmit: function(){
-  //
-  //     let addListEl = this.refs.addListEl.value
-  //
-  //             let newStateObj = {
-  //                   listData : {
-  //                   addList : addListEl
-  //                   }
-  //                 }
-  //                   this.setState(newStateObj)
-  //         },
-
-
-  // render: function(){
-  //         let jsxList = this.state.listItems.map(function(itemEl, i){
-  //           return <HomeView key={i} itemData = {itemEl}/>
-  //
-  //
-  //         })
 
 render: function(){
 
     return  <div>
           <div className="header list-head text-center">
               <h3> To-Do List </h3>
-            </div>
+
           <div className="todo-list text-center">
               <div className="input-group input-group-lg text-center list-input list">
               <form onSubmit={this.addList}>
-                <input type="text" className="form-control" placeholder="" aria-describedby="sizing-addon1" onKeyDown={this._keyDownEvt} ref={(a) => this._inputElement = a} />
+                <input onChange = {this.onInputChange} type="text" className="form-control" placeholder="" aria-describedby="sizing-addon1" value = {this.state.inputText} ref={(a) => this._inputElement = a} />
               </form>
             </div>
-              <ul>
-              <ToDoList entries={this.state.items}/>
+              <ul className="theList">
+              {this.state.listItems.map((items, i) => {
+                  return <ToDoList key={i} itemName = {items.text}><button onClick={DeleteClick}> X </button></ToDoList>
+                })}
               </ul>
           </div>
         </div>
+      </div>
   }
 
 })
 
+  var ToDoList = React.createClass ({
+     render: function() {
 
+          return <li>{this.props.itemName}</li>
+        }
+
+  })
 
 ReactDOM.render(<HomeView/>, document.querySelector('#app-container'))

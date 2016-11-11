@@ -2,28 +2,25 @@
 @import "../../node_modules/font-awesome/scss/font-awesome.scss";
 
 
-// * {
-// 	font-family: Helvetica, Arial, sans-serif;
-// 	box-sizing: border-box;
-// 	max-width: auto;
-// }
+* {
+	box-sizing: border-box;
+	max-width: auto;
+}
 
 
 
 #app-container {
-	background-color: #6495ED;
+	background-color: white;
 }
 
 .list-head h3 {
 	font-family: 'Shrikhand', cursive;
 }
 
-.table-row {
-		background-color: #DDDDDD;
-		text-align: center;
-
+.list-input {
+	padding-left: 41%;
 }
 
-.list-input {
-	padding-left: 60%;
+.ToDoList {
+		style: none;
 }
